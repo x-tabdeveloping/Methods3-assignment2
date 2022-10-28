@@ -1,5 +1,5 @@
+"""Module for data cleaning"""
 import pandas as pd
-from pymare.effectsize import compute_measure
 
 from utils.stats import cohens_d, se_cohens_d, se_effect
 
@@ -52,16 +52,4 @@ def clean_data(data: pd.DataFrame) -> pd.DataFrame:
             n_2=data.n_schizo,
         ),
     )
-    smd, se_smd = compute_measure(
-        "SMD",
-        comparison=2,
-        return_type="tuple",
-        m1=data.control_mean,
-        m2=data.schizo_mean,
-        sd1=data.control_sd,
-        sd2=data.schizo_sd,
-        n1=data.n_control,
-        n2=data.n_schizo,
-    )
-    data = data.assign(smd=smd, se_smd=se_smd)
     return data

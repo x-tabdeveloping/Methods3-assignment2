@@ -1,3 +1,4 @@
+"""Module containing plotting utilities"""
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -6,6 +7,22 @@ import plotly.graph_objects as go
 def funnel_plot(
     data: pd.DataFrame, effect_col: str, error_col: str
 ) -> go.Figure:
+    """Creates a funnel plot for assessing publication bias in meta-analyses.
+
+    Parameters
+    ----------
+    data: DataFrame
+        Data about the meta-analysis.
+    effect_col: str
+        Name of the column that contains the effects.
+    error_col: str
+        Name of the column that contains the standard errors of the effects.
+
+    Returns
+    -------
+    Figure
+        Funnel plot.
+    """
     fig = px.scatter(data, x=effect_col, y=error_col)
     fig.update_yaxes(autorange="reversed")
     mean_effect = data[effect_col].mean()

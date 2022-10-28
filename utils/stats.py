@@ -1,3 +1,4 @@
+"""Module containing statistical utilities."""
 import numpy as np
 
 
@@ -6,7 +7,7 @@ def cohens_d(mu_1, mu_2, sd_1, sd_2):
     v1 = sd_1**2
     v2 = sd_2**2
     pooled_sd = np.sqrt((v1 + v2) / 2)
-    d = (mu_1 - mu_2) / pooled_sd
+    d = (mu_2 - mu_1) / pooled_sd
     return d
     # return compute_measure("d", m1=mu_1, m2=mu_2, sd1=sd_1, sd2=sd_2, )
 

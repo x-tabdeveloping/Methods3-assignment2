@@ -1,3 +1,4 @@
+"""Module containing the model description"""
 import numpy as np
 import pandas as pd
 import pymc as pm

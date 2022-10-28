@@ -1,3 +1,4 @@
+"""Module for simulation utilities"""
 from math import sqrt
 from typing import Callable, Iterable
 
@@ -63,7 +64,6 @@ def simulate_publications(
     Series of bool
         Sequence indicating which studies get published.
     """
-    n_studies = len(significance.index)
     non_significant_published = np.random.binomial(1, 1 - bias)
     published = np.where(significance, 1, non_significant_published)
     published = pd.Series(published, index=significance.index)
